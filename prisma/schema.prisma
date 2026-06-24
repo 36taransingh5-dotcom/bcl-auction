@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Team {
+  id        String   @id @default(cuid())
+  name      String
+  logo      String
+  purse     Float    @default(120.0)
+  spent     Float    @default(0.0)
+  players   Player[]
+}
+
+model Player {
+  id               String   @id @default(cuid())
+  name             String
+  image            String?
+  role             String
+  battingStyle     String?
+  bowlingStyle     String?
+  basePrice        Float
+  status           String   @default("UPCOMING") // UPCOMING, LIVE, SOLD, UNSOLD
+  currentBid       Float?
+  currentBidTeamId String?
+  currentBidTeam   Team?    @relation(fields: [currentBidTeamId], references: [id])
+}

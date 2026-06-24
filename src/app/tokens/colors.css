@@ -1,0 +1,65 @@
+/* ============================================================
+   BCL — Colour System
+   Warm cream stadium canvas, dark ink, colourful auction accents.
+   ============================================================ */
+:root {
+  /* ---- Primary ---- */
+  --bcl-black: #0a0a0a;          /* Auction Black — CTAs, headlines, nav */
+  --bcl-white: #ffffff;
+
+  /* ---- Cricket accent palette ---- */
+  --bcl-green: #1a5c3a;          /* BCL Green — live auction cards, featured teams */
+  --bcl-gold:  #e8b94a;          /* Pitch Gold — winning bids, trophies, premium */
+  --bcl-pink:  #ff4d8b;          /* Auction Pink — player spotlights, featured players */
+  --bcl-sky:   #8fd3ff;          /* Sky Blue — stats, info cards */
+  --bcl-peach: #ffb084;          /* Peach — community sections, team features */
+
+  /* Accent tints (soft fills for card backgrounds) */
+  --bcl-green-soft: #dce9e0;
+  --bcl-gold-soft:  #f8edc9;
+  --bcl-pink-soft:  #ffdce8;
+  --bcl-sky-soft:   #dff1ff;
+  --bcl-peach-soft: #ffe5d4;
+
+  /* Accent ink (readable text on soft tints) */
+  --bcl-green-ink: #103d26;
+  --bcl-gold-ink:  #6b5410;
+  --bcl-pink-ink:  #9c1f4f;
+  --bcl-sky-ink:   #1c5b85;
+  --bcl-peach-ink: #8a4a23;
+
+  /* ---- Surfaces ---- */
+  --bcl-canvas: #fffaf0;         /* Warm stadium background */
+  --bcl-surface: #f5f0e0;        /* Player / team / dashboard cards */
+  --bcl-surface-2: #efe8d4;      /* Slightly deeper card / inset */
+  --bcl-dark: #0a1a1a;           /* Theatre mode, special match moments */
+  --bcl-dark-2: #11302b;         /* Dark surface raised */
+
+  /* ---- Ink / text ---- */
+  --bcl-ink: #0a0a0a;            /* Primary text */
+  --bcl-ink-2: #4a463c;          /* Secondary / muted text on cream */
+  --bcl-ink-3: #837d6e;          /* Tertiary / captions */
+  --bcl-on-dark: #fffaf0;        /* Text on dark surfaces */
+  --bcl-on-dark-2: #b9c4bf;      /* Muted text on dark */
+
+  /* ---- Lines / borders ---- */
+  --bcl-line: #e4dcc6;           /* Hairline on cream */
+  --bcl-line-strong: #cfc4a6;    /* Stronger divider */
+  --bcl-border-ink: #0a0a0a;     /* Heavy ink border (buttons, emphasis) */
+
+  /* ---- Status ---- */
+  --bcl-live: #ff4d8b;           /* LIVE pulse */
+  --bcl-sold: #1a5c3a;           /* SOLD */
+  --bcl-unsold: #837d6e;         /* UNSOLD */
+  --bcl-upcoming: #8fd3ff;       /* UPCOMING */
+
+  /* ---- Semantic aliases ---- */
+  --color-bg: var(--bcl-canvas);
+  --color-surface: var(--bcl-surface);
+  --color-text: var(--bcl-ink);
+  --color-text-muted: var(--bcl-ink-2);
+  --color-primary: var(--bcl-black);
+  --color-on-primary: var(--bcl-white);
+  --color-accent: var(--bcl-pink);
+  --color-border: var(--bcl-line);
+}

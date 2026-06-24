@@ -1,0 +1,25 @@
+<!-- @dsCard group="Colors" viewport="700x150" name="Primary & Surfaces" subtitle="Auction black, warm cream canvas, card surfaces, dark theatre" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 18px; background: var(--bcl-canvas); }
+  .row { display: flex; gap: 12px; }
+  .sw { flex: 1; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--bcl-line); }
+  .chip { height: 64px; }
+  .meta { padding: 8px 10px; background: #fff; }
+  .name { font-family: var(--font-body); font-weight: 600; font-size: 13px; color: var(--bcl-ink); }
+  .hex { font-family: var(--font-mono); font-size: 11px; color: var(--bcl-ink-3); letter-spacing: 0.02em; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="sw"><div class="chip" style="background:var(--bcl-black)"></div><div class="meta"><div class="name">Auction Black</div><div class="hex">#0A0A0A</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--bcl-canvas)"></div><div class="meta"><div class="name">Canvas</div><div class="hex">#FFFAF0</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--bcl-surface)"></div><div class="meta"><div class="name">Surface Card</div><div class="hex">#F5F0E0</div></div></div>
+    <div class="sw"><div class="chip" style="background:var(--bcl-dark)"></div><div class="meta"><div class="name">Dark Theatre</div><div class="hex">#0A1A1A</div></div></div>
+  </div>
+</body>
+</html>

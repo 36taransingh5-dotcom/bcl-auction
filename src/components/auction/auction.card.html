@@ -1,0 +1,43 @@
+<!-- @dsCard group="Components" viewport="700x420" name="Auction — Player, Team & Bid Panel" subtitle="The cards that power the live auction" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body { margin: 0; padding: 24px; background: var(--bcl-canvas); }
+  .rowx { display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script src="../../_ds_bundle.js"></script>
+  <script type="text/babel">
+    const { PlayerCard, TeamCard, BidPanel } = window.DesignSystem_39a708;
+    function Demo() {
+      return (
+        <div className="rowx">
+          <PlayerCard
+            name="Rohit Sharma" role="Batter" variant="pink" status="live"
+            stats={[{label:'Matches',value:243},{label:'Runs',value:'10.7k'},{label:'Avg',value:48.9}]}
+            basePrice="₹ 2.00 CR"
+          />
+          <TeamCard name="Mumbai Strikers" accent="gold" players={12} spent={84.5} purse={120} />
+          <BidPanel
+            currentBid="₹ 4.50 CR" leader="Mumbai Strikers" leaderAccent="gold" nextBid="₹ 4.60 CR"
+            history={[
+              {team:'Mumbai Strikers', amount:'₹ 4.50 CR', accent:'gold'},
+              {team:'Chennai Kings', amount:'₹ 4.40 CR', accent:'sky'},
+              {team:'Delhi Dynamos', amount:'₹ 4.30 CR', accent:'pink'},
+            ]}
+          />
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+  </script>
+</body>
+</html>

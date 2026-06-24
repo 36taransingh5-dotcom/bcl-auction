@@ -1,0 +1,46 @@
+/* ============================================================
+   BCL — Spacing, radius, shadow, layout
+   Depth from colour + spacing + illustration, NOT heavy shadows.
+   Rounded friendly UI. No sharp corners.
+   ============================================================ */
+:root {
+  /* ---- Spacing scale (4px base) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+
+  /* ---- Radius ---- */
+  --radius-sm: 8px;
+  --radius-btn: 12px;      /* buttons per brand */
+  --radius-md: 16px;
+  --radius-card: 24px;     /* team / player / dashboard cards */
+  --radius-lg: 32px;       /* hero auction card */
+  --radius-pill: 999px;    /* badges, chips, timers */
+
+  /* ---- Shadows (soft, sparing — depth comes from colour) ---- */
+  --shadow-xs: 0 1px 0 rgba(10,10,10,0.04);
+  --shadow-sm: 0 2px 8px rgba(10,10,10,0.05);
+  --shadow-md: 0 8px 24px rgba(10,10,10,0.07);
+  --shadow-pop: 0 14px 40px rgba(10,10,10,0.12);   /* live auction emphasis */
+  --shadow-gold: 0 12px 32px rgba(232,185,74,0.30); /* SOLD celebration */
+
+  /* ---- Layout ---- */
+  --container: 1280px;
+  --nav-height: 72px;
+
+  /* ---- Motion ---- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);   /* @kind other */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+  --dur-fast: 140ms;   /* @kind other */
+  --dur: 240ms;        /* @kind other */
+  --dur-slow: 420ms;   /* @kind other */
+}

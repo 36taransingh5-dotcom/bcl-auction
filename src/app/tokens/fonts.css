@@ -1,0 +1,6 @@
+/* BCL webfonts — Inter (display + body + mono fallback)
+   Loaded from Google Fonts CSS API. Inter is the single brand typeface. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@500;600;700;800&display=swap');
+
+/* Inter Tight is used for rounded display headlines; Inter for body.
+   If you later self-host, drop the @import and add @font-face rules here. */

@@ -1,0 +1,42 @@
+/* ============================================================
+   BCL — Typography
+   Inter Tight for rounded display headlines; Inter for body.
+   Tight letter-spacing on display (-1px to -2px).
+   ============================================================ */
+:root {
+  --font-display: 'Inter Tight', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Inter', ui-monospace, 'SF Mono', Menlo, monospace; /* numeric/bid readouts use tabular Inter */
+
+  /* ---- Display scale (rounded headlines) ---- */
+  --text-hero: 72px;      /* Homepage hero "Bid. Build. Become Champions." */
+  --text-display: 56px;
+  --text-h1: 44px;
+  --text-h2: 34px;
+  --text-h3: 26px;
+  --text-h4: 20px;
+
+  /* ---- Body scale ---- */
+  --text-lg: 18px;
+  --text-body: 16px;      /* default body, buttons, nav, stats */
+  --text-sm: 14px;
+  --text-xs: 12px;        /* badges, captions, labels */
+
+  /* ---- Weights ---- */
+  --weight-regular: 400;
+  --weight-medium: 500;   /* display default per brand */
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extra: 800;    /* SOLD / big bid numbers */
+
+  /* ---- Line heights ---- */
+  --leading-tight: 1.02;  /* hero / display */
+  --leading-snug: 1.15;
+  --leading-normal: 1.45; /* body */
+
+  /* ---- Letter spacing ---- */
+  --tracking-display: -0.02em;   /* ~ -1px to -2px on large sizes */
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-label: 0.08em;      /* uppercase labels: LIVE, SOLD, UPCOMING */
+}

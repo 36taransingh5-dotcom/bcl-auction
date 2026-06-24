@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 120 40" fill="none">
+  <rect x="0" y="4" width="32" height="32" rx="9" fill="#0a0a0a"></rect>
+  <circle cx="16" cy="20" r="8.5" fill="#ff4d8b"></circle>
+  <path d="M16 11.5 a8.5 8.5 0 0 1 0 17" stroke="#fffaf0" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-dasharray="2.2 2.6"></path>
+  <text x="40" y="27" font-family="&#39;Inter Tight&#39;, Inter, sans-serif" font-size="22" font-weight="700" letter-spacing="-1" fill="#0a0a0a">BCL</text>
+</svg>

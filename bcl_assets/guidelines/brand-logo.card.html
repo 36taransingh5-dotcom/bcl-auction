@@ -1,0 +1,29 @@
+<!-- @dsCard group="Brand" viewport="700x170" name="Logo & Wordmark" subtitle="Cricket-ball mark + BCL wordmark on cream / ink / accent" -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; padding: 0; background: var(--bcl-canvas); }
+  .row { display: flex; height: 170px; }
+  .cell { flex: 1; display: flex; align-items: center; justify-content: center; gap: 12px; }
+  .word { font-family: var(--font-display); font-weight: 700; font-size: 30px; letter-spacing: -1.5px; }
+</style>
+</head>
+<body>
+  <div class="row">
+    <div class="cell" style="background:var(--bcl-canvas)">
+      <img src="../assets/bcl-mark.svg" width="44" height="44" alt="">
+      <span class="word" style="color:var(--bcl-ink)">BCL</span>
+    </div>
+    <div class="cell" style="background:var(--bcl-black)">
+      <img src="../assets/bcl-mark.svg" width="44" height="44" alt="">
+      <span class="word" style="color:var(--bcl-canvas)">BCL</span>
+    </div>
+    <div class="cell" style="background:var(--bcl-pink)">
+      <span class="word" style="color:#fff; letter-spacing:-1.5px">Bromies Cricket League</span>
+    </div>
+  </div>
+</body>
+</html>
