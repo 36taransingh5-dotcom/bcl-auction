@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { socket } from '../../../lib/socket';
 import { Button } from '../../../components/core/Button.jsx';
 import { Badge } from '../../../components/core/Badge.jsx';
+import { Avatar } from '../../../components/core/Avatar.jsx';
 import { PlayerCard } from '../../../components/auction/PlayerCard.jsx';
 import { BidPanel } from '../../../components/auction/BidPanel.jsx';
 import { CountdownTimer } from '../../../components/core/CountdownTimer.jsx';
@@ -93,6 +94,24 @@ export default function AdminAuctionClient({ teams }) {
     );
   }
 
+  const placeBid = (teamId) => {
+    if (state.status !== 'LIVE') return;
+    
+    let inc = 0.05;
+    const bid = state.highestBid || 0;
+    if (bid >= 1 && bid < 2) inc = 0.10;
+    else if (bid >= 2 && bid < 10) inc = 0.10; // 0.1 CR as requested
+    else if (bid >= 10) inc = 0.50;
+
+    const nb = Math.round((bid + inc) * 100) / 100;
+    
+    socket.emit('team:placeBid', { teamId, amount: nb });
+  };
+  
+  const skipPlayer = (teamId) => {
+    socket.emit('team:skip', { teamId });
+  };
+
   const adminStart = () => socket.emit('admin:startNextPlayer');
   const adminIncreaseTimer = () => socket.emit('admin:increaseTimer');
   const adminApprove = () => socket.emit('admin:approveWinner');
@@ -153,6 +172,40 @@ export default function AdminAuctionClient({ teams }) {
               history={history}
               onBid={() => {}}
             />
+          </div>
+        </div>
+
+        {/* Team Bidding Strip */}
+        <div style={{ marginTop: 24 }}>
+          <div style={{ color: 'var(--bcl-on-dark-2)', fontSize: 11, fontWeight: 700, letterSpacing: '0.10em', textTransform: 'uppercase', marginBottom: 12 }}>
+            Simulate Bidding as Teams
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}>
+            {teams.map((t) => {
+              const isLeader = state.highestBidTeamId === t.id;
+              return (
+                <div key={t.id} style={{ display: 'flex', gap: 4 }}>
+                  <button onClick={() => placeBid(t.id)} disabled={state.status !== 'LIVE'} style={{
+                    display: 'flex', alignItems: 'center', gap: 12, padding: '12px 16px',
+                    background: isLeader ? 'rgba(255,255,255,0.10)' : 'rgba(255,255,255,0.04)',
+                    border: `1.5px solid ${isLeader ? 'var(--bcl-gold)' : 'rgba(255,255,255,0.06)'}`,
+                    borderRadius: 16, cursor: state.status !== 'LIVE' ? 'not-allowed' : 'pointer',
+                    textAlign: 'left', opacity: state.status !== 'LIVE' ? 0.5 : 1, flex: 1,
+                  }}>
+                    <Avatar name={t.name} square size={36} ring="gold" />
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ color: 'var(--bcl-on-dark)', fontWeight: 600, fontSize: 14 }}>{t.name}</div>
+                      <div className="bcl-num" style={{ color: 'var(--bcl-on-dark-2)', fontSize: 12 }}>₹{(t.purse).toFixed(1)} CR left</div>
+                    </div>
+                  </button>
+                  <button 
+                    onClick={() => skipPlayer(t.id)} 
+                    disabled={state.status !== 'LIVE'}
+                    style={{ background: '#333', color: '#fff', borderRadius: 8, padding: '0 8px', fontSize: 11, cursor: 'pointer' }}
+                  >Skip</button>
+                </div>
+              );
+            })}
           </div>
         </div>
 
