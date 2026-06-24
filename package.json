@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node server.js",
-    "build": "next build",
+    "build": "npx prisma db push && node prisma/seed.js && next build",
     "start": "NODE_ENV=production node server.js",
     "lint": "next lint"
   },
