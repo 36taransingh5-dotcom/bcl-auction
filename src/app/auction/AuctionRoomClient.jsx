@@ -13,6 +13,7 @@ const fmt = (cr) => cr ? `₹ ${cr.toFixed(2)} CR` : '₹ 0.00 CR';
 
 export default function AuctionRoomClient({ teams }) {
   const [state, setState] = useState({
+    player: null,
     playerId: null,
     highestBid: null,
     highestBidTeamId: null,
@@ -34,6 +35,7 @@ export default function AuctionRoomClient({ teams }) {
           setBidAK(k => k + 1);
         }
         return {
+          player: newState.player || prevState.player,
           playerId: newState.playerId,
           highestBid: newState.highestBid,
           highestBidTeamId: newState.highestBidTeamId,
@@ -83,8 +85,7 @@ export default function AuctionRoomClient({ teams }) {
   };
 
   const adminStart = () => {
-    // Start with the first player for demo purposes
-    socket.emit('admin:startPlayer', { playerId: 'cm0r1abcd0005zxyz1234abcd' }); // Note: We need actual player IDs. We will add a fetch later.
+    socket.emit('admin:startNextPlayer');
   };
 
   const adminIncreaseTimer = () => socket.emit('admin:increaseTimer');
@@ -126,11 +127,11 @@ export default function AuctionRoomClient({ teams }) {
           }}>
             <div style={{ position: 'relative' }}>
               <PlayerCard
-                name={state.playerId ? "Current Player" : "Waiting for Auction"}
-                role="Player"
+                name={state.player ? state.player.name : "Waiting for Auction"}
+                role={state.player ? state.player.role : "Player"}
                 variant="pink"
                 status={state.status.toLowerCase()}
-                basePrice="₹ 2.00 CR"
+                basePrice={state.player ? fmt(state.player.basePrice) : "₹ 2.00 CR"}
                 soldPrice={fmt(state.highestBid)}
                 style={{ position: 'relative' }}
               />
@@ -196,7 +197,7 @@ export default function AuctionRoomClient({ teams }) {
           <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--bcl-on-dark-2)', marginRight: 'auto' }}>
             Admin Controls
           </span>
-          <Button variant="secondary" size="sm" onClick={adminStart}>Demo Start Player</Button>
+          <Button variant="secondary" size="sm" onClick={adminStart}>Start Next Player</Button>
           <Button variant="secondary" size="sm" onClick={adminIncreaseTimer} disabled={state.status !== 'LIVE'}>+10s</Button>
           <button onClick={adminMarkUnsold} disabled={state.status !== 'LIVE'} style={{
             background: 'rgba(131,125,110,0.22)', color: 'var(--bcl-on-dark-2)', padding: '9px 16px', borderRadius: 12

@@ -35,6 +35,7 @@ app.prepare().then(() => {
   let timerInterval = null;
   let timeLeft = 0;
   let currentAuctionState = {
+    player: null,
     playerId: null,
     highestBid: null,
     highestBidTeamId: null,
@@ -61,6 +62,45 @@ app.prepare().then(() => {
       ...currentAuctionState,
       timeLeft,
       skippedTeamsCount: skippedTeams.size
+    });
+
+    socket.on('admin:startNextPlayer', async () => {
+      try {
+        const player = await prisma.player.findFirst({ where: { status: 'UPCOMING' } });
+        if (!player) return;
+        
+        await prisma.player.update({
+          where: { id: player.id },
+          data: { status: 'LIVE' }
+        });
+        
+        currentAuctionState = {
+          player,
+          playerId: player.id,
+          highestBid: player.basePrice,
+          highestBidTeamId: null,
+          status: 'LIVE'
+        };
+        skippedTeams.clear();
+        timeLeft = 20;
+        
+        if (timerInterval) clearInterval(timerInterval);
+        
+        timerInterval = setInterval(() => {
+          if (timeLeft > 0) {
+            timeLeft -= 1;
+            io.emit('auction:timer', { timeLeft });
+          } else {
+            clearInterval(timerInterval);
+            timerInterval = null;
+            io.emit('auction:timerEnded', { playerId: player.id });
+          }
+        }, 1000);
+        
+        broadcastState();
+      } catch (err) {
+        console.error("Error starting player", err);
+      }
     });
 
     socket.on('admin:startPlayer', async ({ playerId }) => {
